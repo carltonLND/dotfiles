@@ -1,4 +1,6 @@
 # Nvim
 undodir/
 compiled.lua
-fish_variables/
+
+# Fish
+fish_variables
