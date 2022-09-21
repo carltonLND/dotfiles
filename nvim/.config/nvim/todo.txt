@@ -1,0 +1,3 @@
+TODO:
+  - Add DAP
+  - Maybe also swap floaterm for toggleterm if i can figure out good keymaps (Doubt it)
