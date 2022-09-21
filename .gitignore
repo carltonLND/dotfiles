@@ -3,6 +3,4 @@ undodir/
 compiled.lua
 
 # Fish
-fish_variables
-
 fish/.config/fish/fish_variables
