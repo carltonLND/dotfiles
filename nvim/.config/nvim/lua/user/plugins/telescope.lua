@@ -14,10 +14,34 @@ for _, dep in ipairs(telescope_deps) do
 end
 
 local telescope = require "telescope"
+local new_maker = function(filepath, bufnr, opts)
+  filepath = vim.fn.expand(filepath)
+  require("plenary.job")
+    :new({
+      command = "file",
+      args = { "--mime-type", "-b", filepath },
+      on_exit = function(j)
+        local mime_type = vim.split(j:result()[1], "/")[1]
+        if mime_type == "text" then
+          require("telescope.previewers").buffer_previewer_maker(
+            filepath,
+            bufnr,
+            opts
+          )
+        else
+          vim.schedule(function()
+            vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, { "BINARY" })
+          end)
+        end
+      end,
+    })
+    :sync()
+end
 
 telescope.setup {
   defaults = {
     winblend = 10,
+    buffer_previewer_maker = new_maker,
   },
   pickers = {
     ["buffers"] = {
@@ -50,6 +74,9 @@ M.n("<leader>/", function()
   )
 end)
 M.n("<leader>sf", require("telescope.builtin").find_files)
+M.n("<leader>sF", function()
+  require("telescope.builtin").find_files { hidden = true }
+end)
 M.n("<leader>sh", require("telescope.builtin").help_tags)
 M.n("<leader>sw", require("telescope.builtin").grep_string)
 M.n("<leader>sg", require("telescope.builtin").live_grep)

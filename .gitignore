@@ -1,2 +1,4 @@
-nvim/.config/nvim/undodir/
-nvim/.config/nvim/lua/user/plugins/compiled.lua
+# Nvim
+undodir/
+compiled.lua
+fish_variables/
