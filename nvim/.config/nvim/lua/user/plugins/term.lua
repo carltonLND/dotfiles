@@ -38,11 +38,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
         "<cmd>FloatermNew --autoclose=0 --title=Run py %<cr>",
         args.buf
       )
-
-      M.n("<leader>df", require("dap-python").test_method, args.buf)
-      M.n("<leader>dc", require("dap-python").test_class, args.buf)
-
-      M.v("<leader>ds", require("dap-python").debug_selection, args.buf)
     elseif ft == "javascript" then
       M.n(
         "<leader>R",
