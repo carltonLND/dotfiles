@@ -42,6 +42,16 @@ telescope.setup {
   defaults = {
     winblend = 10,
     buffer_previewer_maker = new_maker,
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--trim",
+    },
   },
   pickers = {
     ["buffers"] = {
@@ -81,6 +91,11 @@ M.n("<leader>sh", require("telescope.builtin").help_tags)
 M.n("<leader>sw", require("telescope.builtin").grep_string)
 M.n("<leader>sg", require("telescope.builtin").live_grep)
 M.n("<leader>sd", require("telescope.builtin").diagnostics)
+M.n("<leader>sc", function()
+  require("telescope.builtin").find_files {
+    cwd = "~/.config/nvim",
+  }
+end)
 
 local extensions = {
   "ui-select",
