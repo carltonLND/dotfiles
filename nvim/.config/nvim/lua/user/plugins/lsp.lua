@@ -84,6 +84,9 @@ local servers = {
         diagnostics = {
           globals = { "vim", "packer_plugins" },
         },
+        workspace = {
+          ignoreDir = { "undodir" },
+        },
       },
     },
   },
