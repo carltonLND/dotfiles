@@ -56,6 +56,14 @@ telescope.setup {
   pickers = {
     ["buffers"] = {
       ["cwd_only"] = true,
+      mappings = {
+        n = {
+          ["<M-d>"] = require("telescope.actions").delete_buffer,
+        },
+        i = {
+          ["<M-d>"] = require("telescope.actions").delete_buffer,
+        },
+      },
     },
   },
   extensions = {
