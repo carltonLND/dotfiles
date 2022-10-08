@@ -1,12 +1,13 @@
 # Bootstrap fisher plugin manager
 if status is-interactive && ! functions --query fisher
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 end
 
 # if status is-interactive
-    # Commands to run in interactive sessions can go here
+# Commands to run in interactive sessions can go here
 # end
 
+set -Ux EDITOR nvim
 set -g fish_greeting
 
 # Nightfox Color Palette
