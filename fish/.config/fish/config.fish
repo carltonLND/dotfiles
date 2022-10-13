@@ -1,11 +1,13 @@
 # Bootstrap fisher plugin manager
 if status is-interactive && ! functions --query fisher
-  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 end
 
 # if status is-interactive
-    # Commands to run in interactive sessions can go here
+# Commands to run in interactive sessions can go here
 # end
+
+source ~/anaconda3/etc/fish/conf.d/conda.fish
 
 set -g fish_greeting
 
@@ -44,3 +46,9 @@ set -g fish_pager_color_progress $comment
 set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/cj/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
