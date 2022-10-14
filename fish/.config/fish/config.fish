@@ -46,10 +46,9 @@ set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /home/cj/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
-# eval /Users/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
-# <<< conda initialize <<<
+switch (uname)
+  case Linux
+    eval /home/cj/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+  case Darwin
+    eval /Users/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
+end
