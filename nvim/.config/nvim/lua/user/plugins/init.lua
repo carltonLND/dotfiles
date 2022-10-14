@@ -6,7 +6,7 @@ local plugins = {
   "theme",
   "treesitter",
   "telescope",
-  "lualine",
+  "galaxyline",
   "autopairs",
   "rooter",
   "dashboard",

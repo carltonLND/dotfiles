@@ -34,25 +34,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
     local ft = vim.bo.filetype
     if ft == "python" then
       M.n(
-        "<leader>R",
+        "<leader>r",
         "<cmd>FloatermNew --autoclose=0 --title=Run py %<cr>",
         args.buf
       )
     elseif ft == "javascript" then
       M.n(
-        "<leader>R",
+        "<leader>r",
         "<cmd>FloatermNew --autoclose=0 --title=Run npm run start<cr>",
         args.buf
       )
     elseif ft == "lua" then
       M.n(
-        "<leader>R",
+        "<leader>r",
         "<cmd>FloatermNew --autoclose=0 --title=Run lua %<cr>",
         args.buf
       )
     elseif ft == "rust" then
       M.n(
-        "<leader>R",
+        "<leader>r",
         "<cmd>FloatermNew --autoclose=0 --title=Run cargo run<cr>",
         args.buf
       )
