@@ -117,6 +117,10 @@ for server, settings in pairs(servers) do
   lsp[server].setup(vim.tbl_extend("force", default, settings))
 end
 
+-- Code completion
+
+vim.api.nvim_set_hl(0, "PmenuThumb", { link = "Search" })
+
 local cmp = require "cmp"
 local snip = require "luasnip"
 local kind = require "lspkind"
@@ -168,7 +172,6 @@ cmp.setup.cmdline(":", {
 })
 
 -- Formatting
-
 local fmt = require "formatter.filetypes"
 require("formatter").setup {
   filetype = {
