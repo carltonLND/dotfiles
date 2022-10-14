@@ -14,11 +14,10 @@ vim.g.floaterm_title = " Neovim Terminal: $1/$2 "
 vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.8
 
-M.n("<leader>tn", "<cmd>FloatermNew<cr>")
-M.n("<leader>tt", "<cmd>FloatermToggle<cr>")
+M.n("<leader>t", "<cmd>FloatermToggle<cr>")
 M.n("<leader>G", "<cmd>FloatermNew lazygit<cr>")
 
-M.t("<Esc><Esc>", "<cmd>FloatermToggle!<cr>")
+M.t("<Esc>t", "<cmd>FloatermToggle!<cr>")
 M.t("<Esc>n", "<cmd>FloatermNew<cr>")
 M.t("<Esc>q", "<cmd>FloatermKill<cr>")
 M.t("<Esc>Q", "<cmd>FloatermKill!<cr>")
