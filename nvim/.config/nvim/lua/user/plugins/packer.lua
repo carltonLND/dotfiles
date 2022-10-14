@@ -25,6 +25,7 @@ return packer.startup {
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "neovim/nvim-lspconfig"
+    use { "glepnir/lspsaga.nvim", branch = "main" }
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-buffer"
@@ -49,9 +50,15 @@ return packer.startup {
     use "mhartington/formatter.nvim"
     use "mfussenegger/nvim-dap"
     use "nvim-telescope/telescope-dap.nvim"
+    use {
+      "glepnir/galaxyline.nvim",
+      branch = "main",
+      requires = { "kyazdani42/nvim-web-devicons", opt = true },
+    }
 
     -- Themes
     use "EdenEast/nightfox.nvim"
+    use "glepnir/zephyr-nvim"
 
     if _G.PACKER_BOOTSTRAP then
       packer.sync()

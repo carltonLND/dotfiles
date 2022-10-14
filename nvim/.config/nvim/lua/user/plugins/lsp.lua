@@ -3,6 +3,7 @@ local lsp_deps = {
   "mason.nvim",
   "mason-lspconfig.nvim",
   "nvim-lspconfig",
+  "lspsaga.nvim",
   "LuaSnip",
   "nvim-cmp",
   "cmp-nvim-lsp",
@@ -39,33 +40,37 @@ require("mason").setup()
 require("mason-lspconfig").setup {
   automatic_installation = true,
 }
+require("lspsaga").init_lsp_saga {
+  code_action_lightbulb = {
+    enable = false,
+  },
+}
 
-local on_attach = function(client, bufnr)
-  M.n("[d", vim.diagnostic.goto_prev, bufnr)
-  M.n("]d", vim.diagnostic.goto_next, bufnr)
-  M.n("<leader>e", vim.diagnostic.open_float, bufnr)
-  M.n("<leader>q", vim.diagnostic.setloclist, bufnr)
+local on_attach = function(_, bufnr)
+  M.n("[d", function()
+    require("lspsaga.diagnostic").goto_prev {
+      severity = vim.diagnostic.severity.ERROR,
+    }
+  end)
+  M.n("]d", function()
+    require("lspsaga.diagnostic").goto_next {
+      severity = vim.diagnostic.severity.ERROR,
+    }
+  end)
+  M.n("[D", function()
+    require("lspsaga.diagnostic").goto_prev()
+  end)
+  M.n("]D", function()
+    require("lspsaga.diagnostic").goto_next()
+  end)
 
-  M.n("<leader>rn", vim.lsp.buf.rename, bufnr)
-  M.n("<leader>ca", vim.lsp.buf.code_action, bufnr)
-  M.n("gd", vim.lsp.buf.definition, bufnr)
-  M.n("gi", vim.lsp.buf.implementation, bufnr)
-  M.n("gr", require("telescope.builtin").lsp_references, bufnr)
-  M.n("<leader>ds", require("telescope.builtin").lsp_document_symbols, bufnr)
-  M.n(
-    "<leader>ws",
-    require("telescope.builtin").lsp_dynamic_workspace_symbols,
-    bufnr
-  )
-  M.n("K", vim.lsp.buf.hover, bufnr)
-  M.n("<C-k>", vim.lsp.buf.signature_help, bufnr)
-  M.n("gD", vim.lsp.buf.declaration, bufnr)
-  M.n("<leader>D", vim.lsp.buf.type_definition, bufnr)
-  M.n("<leader>wa", vim.lsp.buf.add_workspace_folder, bufnr)
-  M.n("<leader>wr", vim.lsp.buf.remove_workspace_folder, bufnr)
-  M.n("<leader>wl", function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufnr)
+  M.n("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufnr)
+  M.n("<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", bufnr)
+  M.n("<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", bufnr)
+  M.n("gr", "<cmd>Lspsaga rename<CR>", bufnr)
+  M.n("gd", "<cmd>Lspsaga peek_definition<CR>", bufnr)
+  M.n("K", "<cmd>Lspsaga hover_doc<CR>", bufnr)
+  M.n("gh", "<cmd>Lspsaga lsp_finder<CR>", bufnr)
 end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(
@@ -198,9 +203,10 @@ require("formatter").setup {
     fish = {
       fmt.fish.fishindent,
     },
-    ["*"] = {
-      fmt.any.remove_trailing_whitespace,
-    },
+    -- TODO: Throws error on Mac OS X
+    -- ["*"] = {
+    --   fmt.any.remove_trailing_whitespace,
+    -- },
   },
 }
 

@@ -4,4 +4,9 @@ compiled.lua
 
 # Fish
 fish/.config/fish/fish_variables
+<<<<<<< HEAD
+=======
+fish/.config/fish/completions
+fish/.config/fish/conf.d
+>>>>>>> 3fc43d2e976a84fdd162d26527f1e7adf072c1e4
 fish/.config/fish/functions
