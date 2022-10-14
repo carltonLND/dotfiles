@@ -198,9 +198,10 @@ require("formatter").setup {
     fish = {
       fmt.fish.fishindent,
     },
-    ["*"] = {
-      fmt.any.remove_trailing_whitespace,
-    },
+    -- TODO: Throws error on Mac OS X
+    -- ["*"] = {
+    --   fmt.any.remove_trailing_whitespace,
+    -- },
   },
 }
 
