@@ -7,12 +7,7 @@ end
 # Commands to run in interactive sessions can go here
 # end
 
-<<<<<<< HEAD
-source ~/anaconda3/etc/fish/conf.d/conda.fish
-
-=======
 set -g EDITOR nvim
->>>>>>> 3fc43d2e976a84fdd162d26527f1e7adf072c1e4
 set -g fish_greeting
 
 # Nightfox Color Palette
@@ -53,11 +48,8 @@ set -g fish_pager_color_description $comment
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-<<<<<<< HEAD
 eval /home/cj/anaconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
-=======
-eval /Users/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
+# eval /Users/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
 # <<< conda initialize <<<
->>>>>>> 3fc43d2e976a84fdd162d26527f1e7adf072c1e4
