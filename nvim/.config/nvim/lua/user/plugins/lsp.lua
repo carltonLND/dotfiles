@@ -20,6 +20,7 @@ for _, dep in ipairs(lsp_deps) do
   end
 end
 
+-- Lsp Setup
 vim.diagnostic.config {
   underline = false,
   virtual_text = false,
@@ -118,7 +119,6 @@ for server, settings in pairs(servers) do
 end
 
 -- Code completion
-
 vim.api.nvim_set_hl(0, "PmenuThumb", { link = "Search" })
 
 local cmp = require "cmp"
@@ -153,7 +153,7 @@ cmp.setup {
     { name = "luasnip" },
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
   },
 }
 
