@@ -73,6 +73,7 @@ telescope.setup {
     },
     file_browser = {
       path = "%:p:h",
+      path_display = {},
       cwd_to_path = true,
       quiet = true,
       theme = "ivy",

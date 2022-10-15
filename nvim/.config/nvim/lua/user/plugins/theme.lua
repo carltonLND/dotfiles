@@ -4,3 +4,10 @@ if not packer_plugins["zephyr-nvim"] then
 end
 
 vim.cmd "colorscheme zephyr"
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = UserGroup,
+  callback = function()
+    vim.g.terminal_color_7 = "white"
+  end,
+})

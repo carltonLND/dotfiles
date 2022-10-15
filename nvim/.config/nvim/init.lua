@@ -108,7 +108,7 @@ M.x("<leader>p", '"_dP')
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-UserGroup = augroup("UserGroup", {})
+_G.UserGroup = augroup("UserGroup", {})
 
 autocmd("TextYankPost", {
   group = UserGroup,

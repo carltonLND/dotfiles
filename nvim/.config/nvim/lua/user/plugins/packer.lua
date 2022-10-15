@@ -58,7 +58,6 @@ return packer.startup {
     }
 
     -- Themes
-    use "EdenEast/nightfox.nvim"
     use "glepnir/zephyr-nvim"
 
     if _G.PACKER_BOOTSTRAP then
