@@ -71,7 +71,7 @@ for option, value in pairs(settings) do
   vim.opt[option] = value
 end
 
--- Provider settings
+-- Provider Settings
 vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0

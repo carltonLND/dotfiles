@@ -50,6 +50,7 @@ return packer.startup {
     use "mhartington/formatter.nvim"
     use "mfussenegger/nvim-dap"
     use "nvim-telescope/telescope-dap.nvim"
+    use "NvChad/nvim-colorizer.lua"
     use {
       "glepnir/galaxyline.nvim",
       branch = "main",
