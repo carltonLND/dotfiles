@@ -58,3 +58,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end
   end,
 })
+
+local hl = vim.api.nvim_set_hl
+hl(0, "Floaterm", { link = "Normal" })
+hl(0, "FloatermBorder", { link = "TelescopePromptBorder" })
