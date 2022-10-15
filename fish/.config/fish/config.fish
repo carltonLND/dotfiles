@@ -50,5 +50,6 @@ switch (uname)
   case Linux
     eval /home/cj/anaconda3/bin/conda "shell.fish" "hook" $argv | source
   case Darwin
+    set -g XDG_CONFIG_HOME $HOME/.config
     eval /Users/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
 end
