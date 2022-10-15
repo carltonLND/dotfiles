@@ -41,6 +41,7 @@ end
 telescope.setup {
   defaults = {
     winblend = 10,
+    path_display = { "tail" },
     buffer_previewer_maker = new_maker,
     vimgrep_arguments = {
       "rg",
