@@ -16,6 +16,7 @@ local plugins = {
   "git",
   "colorizer",
   "surround",
+  "winbar",
 }
 
 if not packer_plugins then
@@ -25,5 +26,3 @@ end
 for _, plugin in ipairs(plugins) do
   require("user.plugins." .. plugin)
 end
-
-vim.cmd 'let g:terminal_color_7="white"'

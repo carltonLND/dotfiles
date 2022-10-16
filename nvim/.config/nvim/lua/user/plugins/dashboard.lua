@@ -34,14 +34,14 @@ db.custom_center = {
   },
   {
     icon = "  ",
-    desc = "Terminal Window                   ",
-    shortcut = "SPACE tt",
+    desc = "Terminal Window                    ",
+    shortcut = "SPACE t",
     action = "FloatermToggle",
   },
   -- {
   --   icon = "  ",
   --   desc = "Neovim Config                  ",
-  --   shortcut = "SPACE $",
+  --   shortcut = "SPACE sc",
   --   action = "e $MYVIMRC",
   -- },
 }
