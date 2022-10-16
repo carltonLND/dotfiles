@@ -16,7 +16,6 @@ local plugins = {
   "git",
   "colorizer",
   "surround",
-  "winbar",
 }
 
 if not packer_plugins then

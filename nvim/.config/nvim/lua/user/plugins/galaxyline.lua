@@ -50,7 +50,7 @@ gls.left[2] = {
           .. " guibg="
           .. colors.bg
       )
-      return "  "
+      return "  "
     end,
   },
 }
