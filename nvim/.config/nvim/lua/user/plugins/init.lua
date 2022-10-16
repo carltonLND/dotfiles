@@ -15,6 +15,7 @@ local plugins = {
   "lsp",
   "git",
   "colorizer",
+  "surround",
 }
 
 if not packer_plugins then
