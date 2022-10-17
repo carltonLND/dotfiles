@@ -2,7 +2,7 @@
 pcall(require, "impatient")
 
 -- Current version of Neovim for this config
-local V = "0.7.2"
+local V = "0.8.0"
 
 -- Version checking
 if vim.api.nvim_call_function("has", { "nvim-" .. V }) ~= 1 then
