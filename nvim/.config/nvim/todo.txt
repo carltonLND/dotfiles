@@ -1,2 +1,2 @@
 TODO:
-  Find a way to fix highlighting when using lazygit together with zephyr colorscheme 
+  Look further into using DAP

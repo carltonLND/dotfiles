@@ -1,18 +1,26 @@
-# Bootstrap fisher plugin manager
-if status is-interactive && ! functions --query fisher
-    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+# Activate conda base env at shell startup
+switch (uname)
+    case Linux
+        eval /home/cj/.miniconda3/bin/conda "shell.fish" hook $argv | source
+    case Darwin
+        set -g XDG_CONFIG_HOME $HOME/.config
+        eval /Users/cj/.miniconda3/bin/conda "shell.fish" hook $argv | source
 end
 
-# if status is-interactive
-# Commands to run in interactive sessions can go here
-# end
+# Commands to run in interactive sessions
+if status is-interactive
+    # Bootstrap fisher plugin manager
+    if ! functions --query fisher
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    end
 
+end
+
+# Shell variables
 set -g EDITOR nvim
 set -g fish_greeting
 
 # Nightfox Color Palette
-# Style: nightfox
-# Upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/nightfox/nightfox_fish.fish
 set -l foreground cdcecf
 set -l selection 2b3b51
 set -l comment 738091
@@ -45,11 +53,3 @@ set -g fish_pager_color_progress $comment
 set -g fish_pager_color_prefix $cyan
 set -g fish_pager_color_completion $foreground
 set -g fish_pager_color_description $comment
-
-switch (uname)
-    case Linux
-        eval /home/cj/anaconda3/bin/conda "shell.fish" hook $argv | source
-    case Darwin
-        set -g XDG_CONFIG_HOME $HOME/.config
-        eval /Users/cj/.miniconda3/bin/conda "shell.fish" hook $argv | source
-end

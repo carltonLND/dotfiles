@@ -113,6 +113,7 @@ local servers = {
   },
   ["pyright"] = {},
   ["tsserver"] = {},
+  -- ["grammarly"] = {},
 }
 
 local lsp = require "lspconfig"
