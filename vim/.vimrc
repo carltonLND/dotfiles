@@ -2,12 +2,12 @@
 
 " Boostrap plugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    augroup plug_bootstrap
-      autocmd!
-      autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
-    augroup end
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  augroup plug_bootstrap
+    autocmd!
+    autocmd VimEnter * PlugInstall --sync | quit | source $MYVIMRC
+  augroup end
 endif
 
 " Update installed plugins when changes are saved to .vimrc
