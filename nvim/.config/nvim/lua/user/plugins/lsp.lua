@@ -217,4 +217,5 @@ require("formatter").setup {
   },
 }
 
+-- Formatting keymap
 M.n("<leader>f", "<cmd>FormatLock<cr>")
