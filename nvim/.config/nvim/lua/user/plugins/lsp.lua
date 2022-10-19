@@ -51,40 +51,37 @@ require("lspsaga").init_lsp_saga {
   },
 }
 
-local on_attach = function(_, bufnr)
-  M.n("[d", function()
-    require("lspsaga.diagnostic").goto_prev {
-      severity = vim.diagnostic.severity.ERROR,
-    }
-  end)
-  M.n("]d", function()
-    require("lspsaga.diagnostic").goto_next {
-      severity = vim.diagnostic.severity.ERROR,
-    }
-  end)
-  M.n("[D", function()
-    require("lspsaga.diagnostic").goto_prev()
-  end)
-  M.n("]D", function()
-    require("lspsaga.diagnostic").goto_next()
-  end)
-
-  M.n("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufnr)
-  M.n("<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", bufnr)
-  M.n("<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", bufnr)
-  M.n("gr", "<cmd>Lspsaga rename<CR>", bufnr)
-  M.n("gd", "<cmd>Lspsaga peek_definition<CR>", bufnr)
-  M.n("K", "<cmd>Lspsaga hover_doc<CR>", bufnr)
-  M.n("gh", "<cmd>Lspsaga lsp_finder<CR>", bufnr)
-end
-
-local capabilities = require("cmp_nvim_lsp").default_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+M.n("[d", function()
+  require("lspsaga.diagnostic").goto_prev {
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end)
+M.n("]d", function()
+  require("lspsaga.diagnostic").goto_next {
+    severity = vim.diagnostic.severity.ERROR,
+  }
+end)
+M.n("[D", function()
+  require("lspsaga.diagnostic").goto_prev()
+end)
+M.n("]D", function()
+  require("lspsaga.diagnostic").goto_next()
+end)
 
 local default = {
-  on_attach = on_attach,
-  capabilities = capabilities,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  ),
+
+  on_attach = function(_, bufnr)
+    M.n("<leader>ca", "<cmd>Lspsaga code_action<CR>", bufnr)
+    M.n("<leader>e", "<cmd>Lspsaga show_line_diagnostics<CR>", bufnr)
+    M.n("<leader>e", "<cmd>Lspsaga show_cursor_diagnostics<CR>", bufnr)
+    M.n("gr", "<cmd>Lspsaga rename<CR>", bufnr)
+    M.n("gd", "<cmd>Lspsaga peek_definition<CR>", bufnr)
+    M.n("K", "<cmd>Lspsaga hover_doc<CR>", bufnr)
+    M.n("gh", "<cmd>Lspsaga lsp_finder<CR>", bufnr)
+  end,
 }
 
 local servers = {
@@ -177,7 +174,8 @@ cmp.setup.cmdline(":", {
 })
 
 -- Formatting
-M.n("<leader>f", "<cmd>FormatLock<cr>")
+M.n("<leader>f", "<cmd>Format<cr>")
+M.n("<leader>F", "<cmd>FormatWrite<cr>")
 
 local fmt = require "formatter.filetypes"
 require("formatter").setup {
@@ -221,14 +219,15 @@ require("formatter").setup {
 }
 
 -- Linting
-vim.api.nvim_create_autocmd("TextChanged", {
-  group = UserGroup,
-  pattern = { ".py" },
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
 
-require("lint").linters_by_ft = {
-  python = { "mypy" },
-}
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+--   group = UserGroup,
+--   pattern = { "*.py" },
+--   callback = function()
+--     require("lint").try_lint()
+--   end,
+-- })
+--
+-- require("lint").linters_by_ft = {
+--   python = { "flake8" },
+-- }
