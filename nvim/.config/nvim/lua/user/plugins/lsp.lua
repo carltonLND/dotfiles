@@ -12,6 +12,7 @@ local lsp_deps = {
   "cmp_luasnip",
   "lspkind.nvim",
   "formatter.nvim",
+  "nvim-lint",
 }
 
 for _, dep in ipairs(lsp_deps) do
@@ -176,6 +177,8 @@ cmp.setup.cmdline(":", {
 })
 
 -- Formatting
+M.n("<leader>f", "<cmd>FormatLock<cr>")
+
 local fmt = require "formatter.filetypes"
 require("formatter").setup {
   filetype = {
@@ -217,5 +220,15 @@ require("formatter").setup {
   },
 }
 
--- Formatting keymap
-M.n("<leader>f", "<cmd>FormatLock<cr>")
+-- Linting
+vim.api.nvim_create_autocmd("TextChanged", {
+  group = UserGroup,
+  pattern = { ".py" },
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
+require("lint").linters_by_ft = {
+  python = { "mypy" },
+}

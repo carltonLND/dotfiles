@@ -22,6 +22,7 @@ return packer.startup {
     use "lewis6991/gitsigns.nvim"
     use "nvim-treesitter/nvim-treesitter"
     use "nvim-treesitter/nvim-treesitter-textobjects"
+    use "mfussenegger/nvim-lint"
     use "williamboman/mason.nvim"
     use "williamboman/mason-lspconfig.nvim"
     use "neovim/nvim-lspconfig"
