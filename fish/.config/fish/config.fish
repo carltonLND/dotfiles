@@ -1,12 +1,3 @@
-# Activate conda base env at shell startup
-switch (uname)
-    case Linux
-        eval /home/cj/.miniconda3/bin/conda "shell.fish" hook $argv | source
-    case Darwin
-        set -g XDG_CONFIG_HOME $HOME/.config
-        eval /Users/cj/.miniconda3/bin/conda "shell.fish" hook $argv | source
-end
-
 # Commands to run in interactive sessions
 if status is-interactive
     # Bootstrap fisher plugin manager
@@ -15,6 +6,8 @@ if status is-interactive
     end
 
 end
+
+pyenv init - | source
 
 # Shell variables
 set -g EDITOR nvim

@@ -72,11 +72,8 @@ for option, value in pairs(settings) do
 end
 
 -- Provider Settings
-vim.g.loaded_python_provider = 0
-vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
 
 -- Keymaps
 require "user.map"
@@ -108,18 +105,18 @@ M.x("<leader>p", '"_dP')
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
-_G.UserGroup = augroup("UserGroup", {})
+_G.UserGroup = augroup("UserGroup", { clear = true })
 
-autocmd("TextYankPost", {
-  group = UserGroup,
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank {
-      higroup = "IncSearch",
-      timeout = 40,
-    }
-  end,
-})
+-- autocmd("TextYankPost", {
+--   group = UserGroup,
+--   pattern = "*",
+--   callback = function()
+--     vim.highlight.on_yank {
+--       higroup = "IncSearch",
+--       timeout = 40,
+--     }
+--   end,
+-- })
 
 -- Load plugins
 require "user.plugins"
