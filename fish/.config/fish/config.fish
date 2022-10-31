@@ -7,8 +7,6 @@ if status is-interactive
 
 end
 
-pyenv init - | source
-
 # Shell variables
 set -g EDITOR nvim
 set -g fish_greeting
