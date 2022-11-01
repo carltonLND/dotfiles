@@ -38,7 +38,6 @@ local settings = {
   softtabstop = 2,
   shiftwidth = 2,
   expandtab = true,
-  smartindent = true,
   number = true,
   relativenumber = true,
   signcolumn = "yes:1",

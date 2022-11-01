@@ -57,7 +57,6 @@ return packer.startup {
       branch = "main",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
-    use { "kylechui/nvim-surround", tag = "*" }
 
     -- Themes
     use "glepnir/zephyr-nvim"
