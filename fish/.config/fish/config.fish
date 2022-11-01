@@ -6,8 +6,8 @@ if status is-interactive
     end
 end
 
+# Activate ssh at startup
 setenv SSH_ENV $HOME/.ssh/environment
-
 function start_agent
     echo "Initializing new SSH agent ..."
     ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
@@ -43,7 +43,6 @@ else
         start_agent
     end
 end
-
 
 # Shell variables
 set -g EDITOR nvim
